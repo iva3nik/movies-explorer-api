@@ -1,11 +1,6 @@
 const regexLink = /https?:\/\/[\w{1,s}\W{1,s}]#?/;
 const validator = require('validator');
-
-const allowedCors = [
-  'https://domainmesto.nomoredomains.rocks',
-  'http://domainmesto.nomoredomains.rocks',
-];
-const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+const JWT_SECRET = '5dacab97a83809a4dfb5f66ca9fc1f855e3915a4ec8b721a01b77201078c2753';
 
 const ValidationLinkMethod = (value) => {
   const result = validator.isURL(value);
@@ -18,6 +13,5 @@ const ValidationLinkMethod = (value) => {
 module.exports = {
   regexLink,
   ValidationLinkMethod,
-  allowedCors,
-  DEFAULT_ALLOWED_METHODS,
+  JWT_SECRET,
 };
