@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
 const { regexLink } = require('../utils/constants');
 
 const movieSchema = new mongoose.Schema({

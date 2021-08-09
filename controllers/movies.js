@@ -18,9 +18,18 @@ module.exports.addNewMovie = (req, res, next) => {
   const owner = req.user._id;
 
   Movie.create({
-    country, director, duration, year,
-    description, image, trailer, nameRU,
-    nameEN, thumbnail, movieID, owner,
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailer,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieID,
+    owner,
   })
     .then((movie) => res.status(201).send({ movie }))
     .catch((err) => {
@@ -32,12 +41,12 @@ module.exports.addNewMovie = (req, res, next) => {
 };
 
 module.exports.deleteSavedMovie = (req, res, next) => {
-  Card.findByIdAndRemove(req.params.movieID)
+  Movie.findByIdAndRemove(req.params.movieID)
     .orFail(() => {
       throw new NotFoundError('Фильм по указанному _id не найден');
     })
     .then((movie) => {
-      if (String(ьщмшу.owner) !== req.user._id) {
+      if (String(movie.owner) !== req.user._id) {
         throw new AuthorizationError('Нельзя удалить чужой фильм');
       }
 

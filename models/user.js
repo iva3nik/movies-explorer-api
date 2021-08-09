@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     require: true,
     validate: { validation: validator.isEmail },
-    dropDups,
+    dropDups: true,
   },
   password: {
     type: String,
