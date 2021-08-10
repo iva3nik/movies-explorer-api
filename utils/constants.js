@@ -5,7 +5,7 @@ const allowedCors = [
   'https://iva3diploma.nomoredomains.club',
   'http://iva3diploma.nomoredomains.club',
 ];
-const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 const ValidationLinkMethod = (value) => {
   const result = validator.isURL(value);
