@@ -6,7 +6,7 @@ const AuthentificationError = require('../errors/authentification-err');
 const ConflictingRequestError = require('../errors/conflicting-request-err');
 const NotFoundError = require('../errors/not-found-err');
 
-const { JWT_SECRET } = process.env;
+const { JWT_SECRET } = require('../utils/constants');
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
