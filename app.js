@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -8,6 +9,7 @@ const { errors } = require('celebrate');
 const serverError = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -35,6 +37,7 @@ async function start() {
   }
 }
 
+app.use(cors);
 app.use(requestLogger);
 app.use(limiter);
 

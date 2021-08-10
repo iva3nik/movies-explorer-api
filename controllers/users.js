@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -6,7 +7,7 @@ const AuthentificationError = require('../errors/authentification-err');
 const ConflictingRequestError = require('../errors/conflicting-request-err');
 const NotFoundError = require('../errors/not-found-err');
 
-const { JWT_SECRET } = require('../utils/constants');
+const { JWT_SECRET = 'dev-secret' } = process.env;
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
