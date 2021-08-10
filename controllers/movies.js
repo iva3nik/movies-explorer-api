@@ -50,7 +50,7 @@ module.exports.deleteSavedMovie = (req, res, next) => {
         throw new AuthorizationError('Нельзя удалить чужой фильм');
       }
 
-      res.status(200).send("Фильм удалён");
+      res.status(200).send('Фильм удалён');
     })
     .catch((err) => {
       if (err.message === 'Фильм по указанному _id не найден') {

@@ -25,6 +25,20 @@ module.exports.login = (req, res, next) => {
     });
 };
 
+module.exports.logout = (req, res, next) => {
+  const { email } = req.body;
+
+  return User.findOne({ email })
+    .then(() => {
+      res.clearCookie('jwt', {
+        httpOnly: true,
+        sameSite: true,
+      })
+        .status(200).send('Выход из аккаунта прошел успешно');
+    })
+    .catch(next);
+};
+
 module.exports.createNewUser = (req, res, next) => {
   const {
     name, email, password,
