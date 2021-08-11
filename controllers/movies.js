@@ -13,7 +13,7 @@ module.exports.addNewMovie = (req, res, next) => {
   const {
     country, director, duration, year,
     description, image, trailer, nameRU,
-    nameEN, thumbnail, movieID,
+    nameEN, thumbnail, movieId,
   } = req.body;
   const owner = req.user._id;
 
@@ -28,7 +28,7 @@ module.exports.addNewMovie = (req, res, next) => {
     nameRU,
     nameEN,
     thumbnail,
-    movieID,
+    movieId,
     owner,
   })
     .then((movie) => res.status(201).send({ movie }))
@@ -41,7 +41,7 @@ module.exports.addNewMovie = (req, res, next) => {
 };
 
 module.exports.deleteSavedMovie = (req, res, next) => {
-  Movie.findByIdAndRemove(req.params.movieID)
+  Movie.findByIdAndRemove(req.params.movieId)
     .orFail(() => {
       throw new NotFoundError('Фильм по указанному _id не найден');
     })
