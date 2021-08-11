@@ -35,7 +35,7 @@ module.exports.logout = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       })
-        .status(200).send('Выход из аккаунта прошел успешно');
+        .status(200).send({ message: 'Выход из аккаунта прошел успешно' });
     })
     .catch(next);
 };
