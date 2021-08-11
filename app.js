@@ -12,7 +12,7 @@ const router = require('./routes/index');
 const cors = require('./middlewares/cors');
 const { MONGOOSE_URL } = require('./utils/constants');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, NODE_ENV, MONGOOSE_URL_ENV } = process.env;
 const app = express();
 const limiter = rateLimit({
   windowMs: 90000,
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 async function start() {
   try {
     app.listen(PORT);
-    await mongoose.connect(MONGOOSE_URL, {
+    await mongoose.connect(NODE_ENV === 'production' ? MONGOOSE_URL_ENV : MONGOOSE_URL, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
