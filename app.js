@@ -10,6 +10,7 @@ const serverError = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
 const cors = require('./middlewares/cors');
+const { MONGOOSE_URL } = require('./utils/constants');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -26,7 +27,7 @@ app.use(bodyParser.json());
 async function start() {
   try {
     app.listen(PORT);
-    await mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+    await mongoose.connect(MONGOOSE_URL, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,

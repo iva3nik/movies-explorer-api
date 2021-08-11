@@ -1,6 +1,8 @@
 const regexLink = /https?:\/\/[\w{1,s}\W{1,s}]#?/;
 const validator = require('validator');
 
+const MONGOOSE_URL = 'mongodb://localhost:27017/bitfilmsdb';
+
 const allowedCors = [
   'https://iva3diploma.nomoredomains.club',
   'http://iva3diploma.nomoredomains.club',
@@ -20,4 +22,5 @@ module.exports = {
   ValidationLinkMethod,
   DEFAULT_ALLOWED_METHODS,
   allowedCors,
+  MONGOOSE_URL,
 };
