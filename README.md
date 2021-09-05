@@ -1,5 +1,7 @@
 # Backend Дипломного проекта: movies-explorer-api
 
+Cтек: JavaScript / React.js / Node.js / MongoDB / Git
+
 # Ссылка на проект
 https://api.iva3diploma.nomoredomains.club
 
